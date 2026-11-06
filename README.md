@@ -12,12 +12,12 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 - PingRepository : test TCP Connect explicite (jamais présenté comme ICMP).
 - AutomaticDiagnostic : diagnostic en un clic (réseau, Wi-Fi, passerelle, DNS).
 - SecurityCheck : observations défensives sans score absolu.
-- DashboardViewModel + écran d’accueil avec bouton « Analyser ma connexion » et affichage des résultats.
+- LAN Discovery : confirmation explicite obligatoire, plage limitée au sous-réseau privé, timeouts, pas de scan Internet, absence de réponse ≠ équipement éteint.
+- DashboardViewModel + écran d’accueil avec bouton « Analyser ma connexion ».
 - Entité Room DiagnosticEntity pour l’historique local.
 - Test unitaire de base (DnsRepository).
 
 ### À faire
-- LAN Discovery (confirmation explicite, limites de portée et de concurrence).
 - Graphiques (RSSI, latence).
 - Exports PDF / CSV / JSON avec masquage optionnel.
 - Historique complet (consultation, suppression, comparaison).
