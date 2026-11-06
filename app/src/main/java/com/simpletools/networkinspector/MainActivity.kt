@@ -38,6 +38,7 @@ fun DashboardRoute(
     onSettings: () -> Unit,
     onWifi: () -> Unit,
     onPing: () -> Unit,
+    onDns: () -> Unit,
     viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -51,6 +52,7 @@ fun DashboardRoute(
             onSettings = onSettings,
             onWifi = onWifi,
             onPing = onPing,
+            onDns = onDns,
             modifier = Modifier.padding(innerPadding)
         )
     }
@@ -66,6 +68,7 @@ fun Dashboard(
     onSettings: () -> Unit,
     onWifi: () -> Unit,
     onPing: () -> Unit,
+    onDns: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.padding(16.dp).verticalScroll(rememberScrollState())) {
@@ -75,6 +78,7 @@ fun Dashboard(
         Button(onClick = onAnalyze) { Text("Analyser ma connexion") }
         Button(onClick = onWifi) { Text("Wi-Fi Analyzer") }
         Button(onClick = onPing) { Text("Ping Monitor") }
+        Button(onClick = onDns) { Text("DNS Inspector") }
         Button(onClick = onHistory) { Text("Historique") }
         Button(onClick = onLan) { Text("LAN Discovery") }
         Button(onClick = onSettings) { Text("Paramètres") }
