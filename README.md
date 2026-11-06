@@ -16,14 +16,14 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 - Helper de série pour graphiques.
 - Navigation multi-écrans.
 - Écran Paramètres.
-- Écran Wi-Fi Analyzer (SSID, RSSI, bande, vitesse, seuils indicatifs).
-- Écran Ping Monitor (TCP Connect, statistiques).
+- Écran Wi-Fi Analyzer.
+- Écran Ping Monitor.
+- Écran DNS Inspector (résolution système, IPv4/IPv6, durée, erreurs).
 - Test unitaire de base.
 
 ### À faire
 - Rendu graphique Compose (RSSI, latence).
 - Masquage optionnel des données sensibles avant export.
-- Écran DNS Inspector dédié.
 - Tests automatisés étendus.
 - Recette sur Samsung Galaxy A14.
 
