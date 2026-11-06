@@ -14,14 +14,16 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 - Historique local complet (Room + écran).
 - Exports CSV / JSON / PDF.
 - Helper de série pour graphiques.
-- Navigation multi-écrans (Dashboard, Historique, LAN Discovery, Paramètres).
-- Écran Paramètres (thème, confidentialité, version).
+- Navigation multi-écrans.
+- Écran Paramètres.
+- Écran Wi-Fi Analyzer (SSID, RSSI, bande, vitesse, seuils indicatifs).
+- Écran Ping Monitor (TCP Connect, statistiques).
 - Test unitaire de base.
 
 ### À faire
 - Rendu graphique Compose (RSSI, latence).
 - Masquage optionnel des données sensibles avant export.
-- Écrans dédiés Wi-Fi Analyzer et Ping Monitor.
+- Écran DNS Inspector dédié.
 - Tests automatisés étendus.
 - Recette sur Samsung Galaxy A14.
 
