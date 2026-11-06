@@ -6,22 +6,23 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 
 ### Implémenté
 - Structure Gradle, CI GitHub Actions, permissions minimales.
-- NetworkInfoRepository (ConnectivityManager, LinkProperties, VPN, DNS, MTU).
-- WifiInfoRepository (SSID, RSSI, fréquence, vitesse de liaison).
-- DnsRepository (résolution système IPv4/IPv6).
-- PingRepository : test TCP Connect explicite (jamais présenté comme ICMP).
-- AutomaticDiagnostic : diagnostic en un clic (réseau, Wi-Fi, passerelle, DNS).
-- SecurityCheck : observations défensives sans score absolu.
-- LAN Discovery : confirmation explicite obligatoire, plage limitée au sous-réseau privé, timeouts, pas de scan Internet, absence de réponse ≠ équipement éteint.
-- DashboardViewModel + écran d’accueil avec bouton « Analyser ma connexion ».
-- Entité Room DiagnosticEntity pour l’historique local.
-- Test unitaire de base (DnsRepository).
+- NetworkInfoRepository, WifiInfoRepository, DnsRepository.
+- PingRepository (TCP Connect explicite).
+- AutomaticDiagnostic (un clic).
+- SecurityCheck (observations défensives).
+- LAN Discovery (confirmation obligatoire, limites strictes).
+- Historique local : Room (DiagnosticEntity, Dao, Database, HistoryRepository, HistoryScreen + suppression).
+- Exports : CSV, JSON, PDF basique (PdfDocument) via ExportRepository.
+- Helper de série pour graphiques (SimpleChartSeries).
+- Dashboard avec diagnostic automatique.
+- Test unitaire de base.
 
 ### À faire
-- Graphiques (RSSI, latence).
-- Exports PDF / CSV / JSON avec masquage optionnel.
-- Historique complet (consultation, suppression, comparaison).
-- Tests automatisés étendus et recette Galaxy A14.
+- Rendu graphique Compose (RSSI, latence).
+- Masquage optionnel des données sensibles avant export.
+- Navigation multi-écrans complète.
+- Tests automatisés étendus.
+- Recette sur Samsung Galaxy A14.
 
 ## Principes
 
