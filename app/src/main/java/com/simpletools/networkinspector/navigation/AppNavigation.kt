@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.simpletools.networkinspector.DashboardRoute
+import com.simpletools.networkinspector.feature.dns.DnsInspectorScreen
 import com.simpletools.networkinspector.feature.history.HistoryScreen
 import com.simpletools.networkinspector.feature.lan.LanDiscoveryScreen
 import com.simpletools.networkinspector.feature.ping.PingMonitorScreen
@@ -18,6 +19,7 @@ object Routes {
     const val Settings = "settings"
     const val Wifi = "wifi"
     const val Ping = "ping"
+    const val Dns = "dns"
 }
 
 @Composable
@@ -30,7 +32,8 @@ fun AppNavigation() {
                 onLan = { navController.navigate(Routes.Lan) },
                 onSettings = { navController.navigate(Routes.Settings) },
                 onWifi = { navController.navigate(Routes.Wifi) },
-                onPing = { navController.navigate(Routes.Ping) }
+                onPing = { navController.navigate(Routes.Ping) },
+                onDns = { navController.navigate(Routes.Dns) }
             )
         }
         composable(Routes.History) { HistoryScreen() }
@@ -38,5 +41,6 @@ fun AppNavigation() {
         composable(Routes.Settings) { SettingsScreen() }
         composable(Routes.Wifi) { WifiAnalyzerScreen() }
         composable(Routes.Ping) { PingMonitorScreen() }
+        composable(Routes.Dns) { DnsInspectorScreen() }
     }
 }
