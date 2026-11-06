@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.simpletools.networkinspector.DashboardRoute
 import com.simpletools.networkinspector.feature.history.HistoryScreen
 import com.simpletools.networkinspector.feature.lan.LanDiscoveryScreen
 import com.simpletools.networkinspector.feature.settings.SettingsScreen
-import com.simpletools.networkinspector.MainActivity.DashboardRoute
 
 object Routes {
     const val Dashboard = "dashboard"
