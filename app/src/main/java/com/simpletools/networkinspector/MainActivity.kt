@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,7 +29,12 @@ class MainActivity : ComponentActivity() {
             MaterialTheme {
                 val state by viewModel.uiState.collectAsState()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Dashboard(state, { viewModel.refresh() }, Modifier.padding(innerPadding))
+                    Dashboard(
+                        state,
+                        onRefresh = { viewModel.refresh() },
+                        onAnalyze = { viewModel.runAutomatic() },
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -38,12 +45,15 @@ class MainActivity : ComponentActivity() {
 fun Dashboard(
     state: com.simpletools.networkinspector.feature.dashboard.DashboardUiState,
     onRefresh: () -> Unit,
+    onAnalyze: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.padding(16.dp)) {
+    Column(modifier = modifier.padding(16.dp).verticalScroll(rememberScrollState())) {
         Text("SimpleTools Network Inspector", style = MaterialTheme.typography.headlineMedium)
         Text("by AIWORKPAY — V1.0.0")
         Button(onClick = onRefresh) { Text("Refresh") }
+        Button(onClick = onAnalyze) { Text("Analyser ma connexion") }
+
         state.network?.let { n ->
             Text("Transport: ${n.transport}")
             Text("Internet: ${if (n.hasInternet) "Yes" else "No"} (validated: ${n.isValidated})")
@@ -57,5 +67,21 @@ fun Dashboard(
             Text("RSSI: ${w.rssi} dBm (${state.signalLabel})")
             Text("Frequency: ${w.frequency} MHz")
         } ?: Text("Wi-Fi: not connected")
+
+        state.autoResult?.let { r ->
+            Text("\nDiagnostic automatique: ${r.overallStatus}")
+            r.steps.forEach { s ->
+                Text("${s.name}: ${s.status} — ${s.detail} (${s.method})")
+            }
+        }
+
+        if (state.security.isNotEmpty()) {
+            Text("\nObservations de sécurité:")
+            state.security.forEach { o ->
+                Text("${o.attentionLevel}: ${o.observation}")
+                Text(o.explanation)
+                Text(o.recommendation)
+            }
+        }
     }
 }
