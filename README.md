@@ -11,16 +11,17 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 - AutomaticDiagnostic (un clic).
 - SecurityCheck (observations défensives).
 - LAN Discovery (confirmation obligatoire, limites strictes).
-- Historique local : Room (DiagnosticEntity, Dao, Database, HistoryRepository, HistoryScreen + suppression).
-- Exports : CSV, JSON, PDF basique (PdfDocument) via ExportRepository.
-- Helper de série pour graphiques (SimpleChartSeries).
-- Dashboard avec diagnostic automatique.
+- Historique local complet (Room + écran).
+- Exports CSV / JSON / PDF.
+- Helper de série pour graphiques.
+- Navigation multi-écrans (Dashboard, Historique, LAN Discovery, Paramètres).
+- Écran Paramètres (thème, confidentialité, version).
 - Test unitaire de base.
 
 ### À faire
 - Rendu graphique Compose (RSSI, latence).
 - Masquage optionnel des données sensibles avant export.
-- Navigation multi-écrans complète.
+- Écrans dédiés Wi-Fi Analyzer et Ping Monitor.
 - Tests automatisés étendus.
 - Recette sur Samsung Galaxy A14.
 
