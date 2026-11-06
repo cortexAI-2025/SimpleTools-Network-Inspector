@@ -19,25 +19,37 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.simpletools.networkinspector.feature.dashboard.DashboardViewModel
+import com.simpletools.networkinspector.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: DashboardViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                val state by viewModel.uiState.collectAsState()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Dashboard(
-                        state,
-                        onRefresh = { viewModel.refresh() },
-                        onAnalyze = { viewModel.runAutomatic() },
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                AppNavigation()
             }
         }
+    }
+}
+
+@Composable
+fun DashboardRoute(
+    onHistory: () -> Unit,
+    onLan: () -> Unit,
+    onSettings: () -> Unit,
+    viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
+    val state by viewModel.uiState.collectAsState()
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Dashboard(
+            state,
+            onRefresh = { viewModel.refresh() },
+            onAnalyze = { viewModel.runAutomatic() },
+            onHistory = onHistory,
+            onLan = onLan,
+            onSettings = onSettings,
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }
 
@@ -46,6 +58,9 @@ fun Dashboard(
     state: com.simpletools.networkinspector.feature.dashboard.DashboardUiState,
     onRefresh: () -> Unit,
     onAnalyze: () -> Unit,
+    onHistory: () -> Unit,
+    onLan: () -> Unit,
+    onSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.padding(16.dp).verticalScroll(rememberScrollState())) {
@@ -53,6 +68,9 @@ fun Dashboard(
         Text("by AIWORKPAY — V1.0.0")
         Button(onClick = onRefresh) { Text("Refresh") }
         Button(onClick = onAnalyze) { Text("Analyser ma connexion") }
+        Button(onClick = onHistory) { Text("Historique") }
+        Button(onClick = onLan) { Text("LAN Discovery") }
+        Button(onClick = onSettings) { Text("Paramètres") }
 
         state.network?.let { n ->
             Text("Transport: ${n.transport}")
