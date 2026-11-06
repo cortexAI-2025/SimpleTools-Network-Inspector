@@ -9,17 +9,19 @@ Application Android gratuite pour diagnostiquer les connexions Wi-Fi, le réseau
 - NetworkInfoRepository (ConnectivityManager, LinkProperties, VPN, DNS, MTU).
 - WifiInfoRepository (SSID, RSSI, fréquence, vitesse de liaison).
 - DnsRepository (résolution système IPv4/IPv6).
-- DashboardViewModel + écran d’accueil affichant les données réelles.
+- PingRepository : test TCP Connect explicite (jamais présenté comme ICMP).
+- AutomaticDiagnostic : diagnostic en un clic (réseau, Wi-Fi, passerelle, DNS).
+- SecurityCheck : observations défensives sans score absolu.
+- DashboardViewModel + écran d’accueil avec bouton « Analyser ma connexion » et affichage des résultats.
 - Entité Room DiagnosticEntity pour l’historique local.
 - Test unitaire de base (DnsRepository).
 
 ### À faire
-- Ping Monitor (TCP Connect fallback honnête).
-- Diagnostic automatique en un clic.
-- LAN Discovery (avec confirmation et limites).
-- Security Check défensif.
-- Graphiques, exports PDF/CSV/JSON, historique complet.
-- Tests automatisés étendus.
+- LAN Discovery (confirmation explicite, limites de portée et de concurrence).
+- Graphiques (RSSI, latence).
+- Exports PDF / CSV / JSON avec masquage optionnel.
+- Historique complet (consultation, suppression, comparaison).
+- Tests automatisés étendus et recette Galaxy A14.
 
 ## Principes
 
