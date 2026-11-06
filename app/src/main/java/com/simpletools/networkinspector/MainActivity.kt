@@ -3,7 +3,6 @@ package com.simpletools.networkinspector
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -37,6 +36,8 @@ fun DashboardRoute(
     onHistory: () -> Unit,
     onLan: () -> Unit,
     onSettings: () -> Unit,
+    onWifi: () -> Unit,
+    onPing: () -> Unit,
     viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -48,6 +49,8 @@ fun DashboardRoute(
             onHistory = onHistory,
             onLan = onLan,
             onSettings = onSettings,
+            onWifi = onWifi,
+            onPing = onPing,
             modifier = Modifier.padding(innerPadding)
         )
     }
@@ -61,6 +64,8 @@ fun Dashboard(
     onHistory: () -> Unit,
     onLan: () -> Unit,
     onSettings: () -> Unit,
+    onWifi: () -> Unit,
+    onPing: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.padding(16.dp).verticalScroll(rememberScrollState())) {
@@ -68,6 +73,8 @@ fun Dashboard(
         Text("by AIWORKPAY — V1.0.0")
         Button(onClick = onRefresh) { Text("Refresh") }
         Button(onClick = onAnalyze) { Text("Analyser ma connexion") }
+        Button(onClick = onWifi) { Text("Wi-Fi Analyzer") }
+        Button(onClick = onPing) { Text("Ping Monitor") }
         Button(onClick = onHistory) { Text("Historique") }
         Button(onClick = onLan) { Text("LAN Discovery") }
         Button(onClick = onSettings) { Text("Paramètres") }
